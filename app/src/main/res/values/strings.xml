@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">GithubUserApp</string>
+    <string name="text_followers">Followers</string>
+    <string name="text_following">Following</string>
+    <string name="text_repositories">\u0020Repositories</string>
+    <string name="text_github_users">Github Users</string>
+    <string name="title_search">Search</string>
+    <string name="content_desc_splash">Showing Github Logo</string>
+    <string name="query_search">Search for Github Users</string>
+    <string name="text_no_results">No Results Found !</string>
+</resources>
