@@ -5,19 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuserapp.databinding.FragmentFollowersBinding
 import com.example.githubuserapp.ui.detail.adapter.FollowingFollowersAdapter
-import com.example.githubuserapp.viewmodel.GithubViewModel
+import com.example.githubuserapp.viewmodel.githubusers.GithubViewModel
+import com.example.githubuserapp.viewmodel.githubusers.ViewModelFactory
 
 class FollowersFragment : Fragment() {
 
     private var _binding: FragmentFollowersBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: FollowingFollowersAdapter
-    private val viewModel by viewModels<GithubViewModel>()
+    private lateinit var viewModel: GithubViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,8 +29,14 @@ class FollowersFragment : Fragment() {
         return binding.root
     }
 
+    private fun obtainViewModel(activity: AppCompatActivity): GithubViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory)[GithubViewModel::class.java]
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = obtainViewModel(activity as AppCompatActivity)
         setAdapter()
         getData()
     }

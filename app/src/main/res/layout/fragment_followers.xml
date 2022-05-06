@@ -8,7 +8,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
         tools:listitem="@layout/following_followers_item"
         android:padding="3dp"
         android:id="@+id/rv_followers"/>

@@ -1,23 +1,36 @@
-package com.example.githubuserapp.viewmodel
+package com.example.githubuserapp.viewmodel.githubusers
 
+import android.app.Application
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.example.githubuserapp.R
+import com.example.githubuserapp.data.room.UsersEntity
 import com.example.githubuserapp.model.details.UserDetailsResponse
 import com.example.githubuserapp.model.searchusers.SearchUsersResponse
 import com.example.githubuserapp.model.users.GithubUsers
-import com.example.githubuserapp.model.users.GithubUsersItem
+import com.example.githubuserapp.repository.GithubRepository
 import com.example.githubuserapp.services.ApiConfig
-import com.example.githubuserapp.ui.detail.UserDetailActivity
-import com.example.githubuserapp.ui.main.GithubUserActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GithubViewModel : ViewModel() {
+class GithubViewModel(application: Application) : ViewModel() {
+
+    //setup for room
+    private val repository: GithubRepository = GithubRepository(application)
+
+    fun insert(usersEntity: UsersEntity) {
+        repository.insert(usersEntity)
+    }
+
+    fun delete(usersEntity: UsersEntity) {
+        repository.delete(usersEntity)
+    }
+
+    fun getAllFavorites(): LiveData<List<UsersEntity>> = repository.getAllFavorites()
+
+    //setup for api
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -49,12 +62,12 @@ class GithubViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     _githubUsersList.value = response.body()
                 } else {
-                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.text_all_github_failed), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<GithubUsers>, t: Throwable) {
-                Toast.makeText(context, t.message.orEmpty(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -72,19 +85,15 @@ class GithubViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     _searchGithubUsers.value = response.body()
                 } else {
-                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.text_search_failed), Toast.LENGTH_SHORT).show()
                 }
 
-                if (response.body()?.totalCount == 0) {
-                    _noResults.value = true
-                } else {
-                    _noResults.value = false
-                }
+                _noResults.value = response.body()?.totalCount == 0
 
             }
 
             override fun onFailure(call: Call<SearchUsersResponse>, t: Throwable) {
-                Toast.makeText(context, t.message.orEmpty(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -102,12 +111,12 @@ class GithubViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     _userDetails.value = response.body()
                 } else {
-                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.text_get_details_failed), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<UserDetailsResponse>, t: Throwable) {
-                Toast.makeText(context, t.message.orEmpty(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -120,12 +129,12 @@ class GithubViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     _userFollowers.value = response.body()
                 } else {
-                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.text_followers_failed), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<GithubUsers>, t: Throwable) {
-                Toast.makeText(context, t.message.orEmpty(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -138,12 +147,12 @@ class GithubViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     _userFollowing.value = response.body()
                 } else {
-                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.text_following_failed), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<GithubUsers>, t: Throwable) {
-                Toast.makeText(context, t.message.orEmpty(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
             }
 
         })

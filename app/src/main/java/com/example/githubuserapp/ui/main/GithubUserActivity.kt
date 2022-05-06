@@ -1,34 +1,72 @@
 package com.example.githubuserapp.ui.main
 
 import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.view.View
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.lifecycle.ViewModelProvider
 import com.example.githubuserapp.R
+import com.example.githubuserapp.data.datastore.SettingPreferences
 import com.example.githubuserapp.databinding.ActivityGithubUserBinding
-import com.example.githubuserapp.model.users.GithubUsersItem
-import com.example.githubuserapp.ui.detail.UserDetailActivity
-import com.example.githubuserapp.ui.main.adapter.GithubUserAdapter
-import com.example.githubuserapp.viewmodel.GithubViewModel
+import com.example.githubuserapp.ui.favorites.FavoritesFragment
+import com.example.githubuserapp.ui.search.SearchActivity
+import com.example.githubuserapp.ui.settings.SettingsFragment
+import com.example.githubuserapp.viewmodel.datastore.DataStoreViewModel
+import com.example.githubuserapp.viewmodel.datastore.DataStoreViewModelFactory
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class GithubUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGithubUserBinding
-    private lateinit var adapter: GithubUserAdapter
-    private val viewModel by viewModels<GithubViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getThemeSettings()
         supportActionBar?.title = getString(R.string.text_github_users)
         setViewBinding()
-        getData()
-        setRecyclerView()
+        setFragment(GithubUsersFragment())
+        bottomNavListeners()
+    }
+
+    private fun setViewBinding(){
+        binding = ActivityGithubUserBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+
+    private fun setFragment(fragment: Fragment) {
+        supportFragmentManager.commit {
+            replace(R.id.fl_container, fragment)
+        }
+    }
+
+    private fun bottomNavListeners() {
+        binding.bnvUsers.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.action_home -> {
+                    setFragment(GithubUsersFragment())
+                    supportActionBar?.show()
+                }
+                R.id.action_favorites -> {
+                    setFragment(FavoritesFragment())
+                    supportActionBar?.hide()
+                }
+                R.id.action_settings -> {
+                    setFragment(SettingsFragment())
+                    supportActionBar?.hide()
+                }
+            }
+            return@setOnItemSelectedListener true
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -40,72 +78,32 @@ class GithubUserActivity : AppCompatActivity() {
         searchView.queryHint = getString(R.string.query_search)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.getAllSearchedUsers(this@GithubUserActivity, query.toString())
+                if (query != null){
+                    SearchActivity.query = query.toString()
+                    val intent = Intent(this@GithubUserActivity, SearchActivity::class.java)
+                    startActivity(intent)
+                }
                 return true
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-                if (query?.isEmpty() == true) {
-                    getData()
-                }
-                return true
+                return false
             }
         })
         return true
     }
 
-    private fun getData() {
-        viewModel.getAllGithubUsers(this)
-    }
+    private fun getThemeSettings() {
+        val pref = SettingPreferences.getInstance(this.dataStore)
+        val viewModelDataStore = ViewModelProvider(this, DataStoreViewModelFactory(pref))[DataStoreViewModel::class.java]
 
-    private fun setData() {
-        viewModel.githubUsersList.observe(this) {
-            adapter.setItems(it)
-        }
-        viewModel.isLoading.observe(this) {
-            showLoading(it)
-        }
-        viewModel.noResults.observe(this) {
-            showNoResults(it)
-        }
-        viewModel.searchGithubUsers.observe(this) { response ->
-            response.items?.let {
-                adapter.setItems(it)
+        viewModelDataStore.getThemeSettings().observe(this) { isDarkModeActive ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
     }
 
-    private fun setViewBinding(){
-        binding = ActivityGithubUserBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-    }
-
-    private fun setRecyclerView() {
-        adapter = GithubUserAdapter(object : GithubUserAdapter.IntentToProfileDetails {
-            override fun intentToDetails(githubUsersItem: GithubUsersItem) {
-                val intent = Intent(this@GithubUserActivity, UserDetailActivity::class.java)
-                intent.putExtra(UserDetailActivity.USER_DETAILS, githubUsersItem)
-                startActivity(intent)
-            }
-
-        })
-        val layoutManager = LinearLayoutManager(this)
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.rvGithubUsers.apply {
-            adapter = this@GithubUserActivity.adapter
-            this.layoutManager = layoutManager
-            addItemDecoration(itemDecoration)
-        }
-
-        //set data to adapter
-        setData()
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.pbLoading.visibility = if(isLoading) View.VISIBLE else View.GONE
-    }
-
-    private fun showNoResults(noResults: Boolean) {
-        binding.tvNoResults.visibility = if(noResults) View.VISIBLE else View.GONE
-    }
 }

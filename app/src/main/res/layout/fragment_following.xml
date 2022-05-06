@@ -9,7 +9,6 @@
         android:id="@+id/rv_following"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
         android:padding="3dp"
         tools:listitem="@layout/following_followers_item" />
 

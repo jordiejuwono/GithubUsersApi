@@ -1,6 +1,5 @@
 package com.example.githubuserapp.model.searchusers
 
-
 import com.example.githubuserapp.model.users.GithubUsersItem
 import com.google.gson.annotations.SerializedName
 

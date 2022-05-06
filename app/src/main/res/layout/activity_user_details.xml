@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:padding="8dp"
     tools:context=".ui.main.GithubUserActivity">
 
@@ -30,7 +29,7 @@
 
         <TextView
             android:id="@+id/tv_name"
-            style="@style/Text.22.White"
+            style="@style/Text.22.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -48,7 +47,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/marlin_soft"
             android:maxLines="1"
-            android:textColor="@color/grey"
+            android:textColor="@color/dark_grey"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@id/iv_avatar"
             app:layout_constraintTop_toBottomOf="@id/tv_name"
@@ -66,7 +65,7 @@
 
     <TextView
         android:id="@+id/tv_workplace"
-        style="@style/Text.20.White"
+        style="@style/Text.20.Primary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -79,7 +78,7 @@
 
     <TextView
         android:id="@+id/tv_location"
-        style="@style/Text.20.White"
+        style="@style/Text.20.Primary"
         android:drawablePadding="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,10 +102,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:background="@color/background"
         app:layout_constraintTop_toBottomOf="@id/v_location"
-        app:tabIndicatorColor="@color/white"
-        app:tabTextColor="@color/white" />
+        app:tabIndicatorColor="@color/black"
+        app:tabTextColor="?colorOnPrimary" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_following"

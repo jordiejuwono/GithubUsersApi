@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.detail.UserDetailActivity">
+    tools:context=".ui.main.GithubUsersFragment">
 
-    <FrameLayout
-        android:id="@+id/fl_container"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_github_users"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bnv_users"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:listitem="@layout/github_user_items"
+        android:layout_height="match_parent" />
 
     <ProgressBar
         android:id="@+id/pb_loading"
@@ -36,14 +35,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnv_users"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:itemTextColor="?colorOnPrimary"
-        app:itemIconTint="?colorOnPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

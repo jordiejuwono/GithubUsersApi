@@ -3,9 +3,9 @@ package com.example.githubuserapp.services
 import com.example.githubuserapp.model.details.UserDetailsResponse
 import com.example.githubuserapp.model.searchusers.SearchUsersResponse
 import com.example.githubuserapp.model.users.GithubUsers
-import com.example.githubuserapp.model.users.GithubUsersItem
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 

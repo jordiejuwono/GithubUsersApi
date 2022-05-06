@@ -1,6 +1,5 @@
 package com.example.githubuserapp.model.details
 
-
 import com.google.gson.annotations.SerializedName
 
 data class UserDetailsResponse(

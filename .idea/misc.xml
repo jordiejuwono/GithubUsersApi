@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jordi/Dicoding Exam/AndroidFundamentalLastProject/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/activity_github_user.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/AndroidFundamentalLastProject/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/activity_search.xml" value="0.16197916666666667" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/AndroidFundamentalLastProject/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/fragment_favorites.xml" value="0.2" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/AndroidFundamentalLastProject/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/fragment_github_users.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/AndroidFundamentalLastProject/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/github_user_items.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/AndroidFundamentalLastProject/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/menu/menu_top.xml" value="0.25" />
         <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 2/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/activity_github_user.xml" value="0.25" />
         <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 2/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 2/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/activity_user_details.xml" value="0.25" />
@@ -11,6 +17,25 @@
         <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 2/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/fragment_following.xml" value="0.25" />
         <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 2/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/github_user_items.xml" value="0.25" />
         <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 2/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/menu/menu_top.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/drawable/bg_items.xml" value="0.1755" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/drawable/ic_company.xml" value="0.116" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/drawable/ic_location.xml" value="0.1" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/activity_github_user.xml" value="0.136" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/activity_search.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/activity_user_details.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/following_followers_item.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/fragment_favorites.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/fragment_followers.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/fragment_following.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/fragment_github_users.xml" value="0.2" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/fragment_settings.xml" value="0.23055555555555557" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/layout/github_user_items.xml" value="0.2" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/menu/menu_bottom.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/menu/menu_details_favorites.xml" value="0.25" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/menu/menu_top.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/menu/menu_top_activity.xml" value="0.1" />
+        <entry key="..\:/Users/jordi/Dicoding Exam/Pengumpulan Submission 3/GithubUserApp - Jordie Juwono/GithubUserApp/app/src/main/res/menu/menu_top_details.xml" value="0.24351851851851852" />
       </map>
     </option>
   </component>
